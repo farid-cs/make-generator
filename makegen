@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cat <<EOF > Makefile
+all: main
+
+clean:
+	rm -f main
+
+.PHONY: all clean
+EOF
