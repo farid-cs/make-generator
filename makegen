@@ -1,8 +1,14 @@
 #!/bin/sh
 
+CC=cc
+CFLAGS='-std=c99 -pedantic -Wall -Wextra'
+
 TARGET=hello
 
 cat <<EOF > Makefile
+CC = ${CC}
+CFLAGS = ${CFLAGS}
+
 all: ${TARGET}
 
 clean:
