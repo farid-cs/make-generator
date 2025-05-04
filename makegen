@@ -25,6 +25,10 @@
 CC=cc
 CFLAGS='-std=c99 -pedantic -Wall -Wextra'
 
+SRC='hello.c util.c'
+DEPS='util.h'
+OBJ="$(echo ${SRC} | sed 's/\.c/.o/g')"
+
 TARGET=hello
 
 cat <<EOF > Makefile
@@ -33,8 +37,13 @@ CFLAGS = ${CFLAGS}
 
 all: ${TARGET}
 
+${TARGET}: ${OBJ}
+	\${CC} -o ${TARGET}  ${OBJ}
+
+${OBJ}: ${DEPS}
+
 clean:
-	rm -f ${TARGET}
+	rm -f ${TARGET} ${OBJ}
 
 .PHONY: all clean
 EOF
